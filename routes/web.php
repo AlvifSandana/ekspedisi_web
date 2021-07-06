@@ -19,3 +19,6 @@ Route::get('/', function () {
 Route::get('/admin/tarif', function () {
     return view('admin.tarif');
 });
+Route::get('/admin/jadwal', function () {
+    return view('admin.penjadwalan');
+});

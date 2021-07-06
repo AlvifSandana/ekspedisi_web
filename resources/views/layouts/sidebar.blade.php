@@ -19,21 +19,21 @@
   </li>
 
   <!-- Nav Item - Daftar Tarif -->
-  <li class="nav-item {{ Request::is('admin/tarif') ? 'active':'' }}">
+  <li class="nav-item {{ Request::is('admin/tarif*') ? 'active':'' }}">
     <a class="nav-link" href="index.html">
       <i class="fas fa-fw fa-ticket-alt"></i>
       <span>Daftar Tarif</span></a>
   </li>
 
   <!-- Nav Item - Daftar Jadwal -->
-  <li class="nav-item ">
+  <li class="nav-item {{ Request::is('admin/jadwal*') ? 'active':'' }}">
     <a class="nav-link" href="index.html">
       <i class="fas fa-fw fa-book"></i>
       <span>Daftar Jadwal</span></a>
   </li>
 
   <!-- Nav Item - Invoice -->
-  <li class="nav-item ">
+  <li class="nav-item {{ Request::is('admin/invoice*') ? 'active':'' }}">
     <a class="nav-link" href="index.html">
       <i class="fas fa-fw fa-users"></i>
       <span>Invoice</span></a>
