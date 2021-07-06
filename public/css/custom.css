@@ -1,0 +1,36 @@
+.badges {
+    border-radius: 0;
+    font-size: 12px;
+    line-height: 1;
+    padding: .375rem .5625rem;
+    font-weight: normal
+}
+
+.badges-outline-primary {
+    color: #405189;
+    border: 1px solid #405189
+}
+
+.badges.badge-pill {
+    border-radius: 10rem
+}
+
+.badges-outline-info {
+    color: #3da5f4;
+    border: 1px solid #3da5f4
+}
+
+.badges-outline-danger {
+    color: #f1536e;
+    border: 1px solid #f1536e
+}
+
+.badges-outline-success {
+    color: #00c689;
+    border: 1px solid #00c689
+}
+
+.badges-outline-warning {
+    color: #fda006;
+    border: 1px solid #fda006
+}
