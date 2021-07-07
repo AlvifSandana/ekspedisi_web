@@ -10,9 +10,10 @@ Fitur yang sedang dikerjakan:
 - [ ] (api) Pengirim login & register
 
 #### Pages
+- [x] Login
 - [x] Dashboard
 - [x] Tarif
-- [ ] Jadwal
+- [x] Jadwal
 - [ ] Invoice
 - [ ] Settings
 
