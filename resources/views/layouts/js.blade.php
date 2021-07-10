@@ -7,4 +7,7 @@
 
 <!-- Custom scripts for all pages-->
 <script src="{{ asset('js/sb-admin-2.min.js')}}"></script>
-
+<script src="https://unpkg.com/feather-icons"></script>
+<script>
+    feather.replace();
+</script>
