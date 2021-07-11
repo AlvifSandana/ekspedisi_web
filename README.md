@@ -6,8 +6,8 @@ Fitur yang sedang dikerjakan:
 
 #### Authentication
 - [ ] Admin login
-- [ ] (api) Sopir login & register
-- [ ] (api) Pengirim login & register
+- [x] (api) Sopir login & register
+- [x] (api) Pengirim login & register
 
 #### Pages
 - [x] Login
