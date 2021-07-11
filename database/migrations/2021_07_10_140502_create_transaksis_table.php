@@ -13,11 +13,11 @@ class CreateTransaksisTable extends Migration
      */
     public function up()
     {
-        Schema::create('Transaksi', function (Blueprint $table) {
+        Schema::create('transaksi', function (Blueprint $table) {
             $table->id('idTransaksi');
-            $table->foreignId('Admin_idAdmin')->constrained('Admin', 'idAdmin')->onDelete('cascade');
-            $table->foreignId('Barang_idBarang')->constrained('Barang', 'idBarang')->onDelete('cascade');
-            $table->foreignId('Barang_Pengirim_idPengirim')->constrained('Pengirim', 'idPengirim')->onDelete('cascade');
+            $table->foreignId('Admin_idAdmin')->constrained('admin', 'idAdmin')->onDelete('cascade');
+            $table->foreignId('Barang_idBarang')->constrained('barang', 'idBarang')->onDelete('cascade');
+            $table->foreignId('Barang_Pengirim_idPengirim')->constrained('pengirim', 'idPengirim')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateTransaksisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Transaksi');
+        Schema::dropIfExists('transaksi');
     }
 }

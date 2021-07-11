@@ -13,12 +13,12 @@ class CreateBarangsTable extends Migration
      */
     public function up()
     {
-        Schema::create('Barang', function (Blueprint $table) {
+        Schema::create('barang', function (Blueprint $table) {
             $table->id('idBarang');
             $table->string('nama_barang', 45);
             $table->string('jenis_barang', 45);
             $table->string('berat_barang', 45);
-            $table->foreignId('Pengirim_idPengirim')->constrained('Pengirim', 'idPengirim')->onDelete('cascade');
+            $table->foreignId('Pengirim_idPengirim')->constrained('pengirim', 'idPengirim')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateBarangsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Barang');
+        Schema::dropIfExists('barang');
     }
 }

@@ -13,12 +13,12 @@ class CreateKendaraansTable extends Migration
      */
     public function up()
     {
-        Schema::create('Kendaraan', function (Blueprint $table) {
+        Schema::create('kendaraan', function (Blueprint $table) {
             $table->id('idKendaraan');
             $table->string('jenis_kendaraan', 45);
             $table->string('plat_kendaraan', 45);
             $table->string('tahun_kendaraan', 45);
-            $table->foreignId('Supir_idSupir')->constrained('Supir', 'idSupir')->onDelete('cascade');
+            $table->foreignId('Supir_idSupir')->constrained('supir', 'idSupir')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateKendaraansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Kendaraan');
+        Schema::dropIfExists('kendaraan');
     }
 }

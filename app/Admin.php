@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Admin extends Model
 {
     // nama tabel
-    protected $table = 'Admin';
+    protected $table = 'admin';
     // otomatis mengisi kolom timestamps
     public $timestamps = true;
     // primary key

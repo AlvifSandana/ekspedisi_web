@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Jadwal extends Model
 {
     // nama tabel
-    protected $table = 'Jadwal';
+    protected $table = 'jadwal';
     // kolom primary key
     protected $primaryKey = 'idJadwal';
     // mass-assignment

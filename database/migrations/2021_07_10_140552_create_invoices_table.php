@@ -13,16 +13,16 @@ class CreateInvoicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('Invoice', function (Blueprint $table) {
+        Schema::create('invoice', function (Blueprint $table) {
             $table->id('idInvoice');
-            $table->foreignId('Transaksi_id_Transaksi')->constrained('Transaksi', 'idTransaksi')->onDelete('cascade');
-            $table->foreignId('Transaksi_Admin_idAdmin')->constrained('Transaksi', 'Admin_idAdmin')->onDelete('cascade');
-            $table->foreignId('Transaksi_Barang_idBarang')->constrained('Transaksi', 'Barang_idBarang')->onDelete('cascade');
-            $table->foreignId('Transaksi_Barang_Pengirim_idPengirim')->constrained('Transaksi', 'Barang_Pengirim_idPengirim')->onDelete('cascade');
-            $table->foreignId('Jadwal_idJadwal')->constrained('Jadwal', 'idJadwal')->onDelete('cascade');
-            $table->foreignId('Jadwal_Admin_idAdmin')->constrained('Jadwal', 'Admin_idAdmin')->onDelete('cascade');
-            $table->foreignId('Jadwal_Kendaraan_idKendaraan')->constrained('Jadwal', 'Kendaraan_idKendaraan')->onDelete('cascade');
-            $table->foreignId('Jadwal_Kendaraan_Supir_idSupir')->constrained('Jadwal', 'Kendaraan_Supir_idSupir')->onDelete('cascade');
+            $table->foreignId('Transaksi_id_Transaksi')->constrained('transaksi', 'idTransaksi')->onDelete('cascade');
+            $table->foreignId('Transaksi_Admin_idAdmin')->constrained('transaksi', 'Admin_idAdmin')->onDelete('cascade');
+            $table->foreignId('Transaksi_Barang_idBarang')->constrained('transaksi', 'Barang_idBarang')->onDelete('cascade');
+            $table->foreignId('Transaksi_Barang_Pengirim_idPengirim')->constrained('transaksi', 'Barang_Pengirim_idPengirim')->onDelete('cascade');
+            $table->foreignId('Jadwal_idJadwal')->constrained('jadwal', 'idJadwal')->onDelete('cascade');
+            $table->foreignId('Jadwal_Admin_idAdmin')->constrained('jadwal', 'Admin_idAdmin')->onDelete('cascade');
+            $table->foreignId('Jadwal_Kendaraan_idKendaraan')->constrained('jadwal', 'Kendaraan_idKendaraan')->onDelete('cascade');
+            $table->foreignId('Jadwal_Kendaraan_Supir_idSupir')->constrained('jadwal', 'Kendaraan_Supir_idSupir')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -34,6 +34,6 @@ class CreateInvoicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Invoice');
+        Schema::dropIfExists('invoice');
     }
 }

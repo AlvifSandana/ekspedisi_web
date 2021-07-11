@@ -13,7 +13,7 @@ class CreateSupirsTable extends Migration
      */
     public function up()
     {
-        Schema::create('Supir', function (Blueprint $table) {
+        Schema::create('supir', function (Blueprint $table) {
             $table->id('idSupir');
             $table->string('nama_supir', 45);
             $table->string('nama_supircadang', 45);
@@ -33,6 +33,6 @@ class CreateSupirsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Supir');
+        Schema::dropIfExists('supir');
     }
 }

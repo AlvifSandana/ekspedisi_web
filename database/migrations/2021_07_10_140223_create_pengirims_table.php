@@ -13,7 +13,7 @@ class CreatePengirimsTable extends Migration
      */
     public function up()
     {
-        Schema::create('Pengirim', function (Blueprint $table) {
+        Schema::create('pengirim', function (Blueprint $table) {
             $table->id('idPengirim');
             $table->string('nama_pengirim', 45);
             $table->string('alamat_pengirim', 45);
@@ -32,6 +32,6 @@ class CreatePengirimsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Pengirim');
+        Schema::dropIfExists('pengirim');
     }
 }

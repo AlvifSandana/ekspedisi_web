@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Pengirim extends Model
 {
     // nama tabel
-    protected $table = 'Pengirim';
+    protected $table = 'pengirim';
     // otomatis mengisi kolom timestamps
     public $timestamps = true;
     // primary key

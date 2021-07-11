@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Invoice extends Model
 {
     // nama tabel
-    protected $table = 'Invoice';
+    protected $table = 'invoice';
     // otomatis mengisi kolom timestamps
     public $timestamps = true;
     // primary key

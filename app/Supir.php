@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Supir extends Model
 {
     // nama tabel
-    protected $table = 'Supir';
+    protected $table = 'supir';
     // otomatis mengisi kolom timestamps
     public $timestamps = true;
     // primary key
