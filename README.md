@@ -18,7 +18,7 @@ Fitur yang sedang dikerjakan:
 - [ ] Settings
 
 #### Process
-- [ ] CRUD Tarif
+- [x] CRUD Tarif
 - [ ] CRUD Jadwal
 - [ ] CRUD Invoice
 - [ ] CRUD Settings
