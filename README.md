@@ -24,3 +24,4 @@ Fitur yang sedang dikerjakan:
 - [ ] CRUD Settings
 - [ ] (api) CRUD Pengirim
 - [ ] (api) CRUD Sopir
+- [x] (api) Tarif
