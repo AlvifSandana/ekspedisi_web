@@ -19,7 +19,9 @@
         <div class="d-flex align-items-center justify-content-center" style="height: 350px">
           <div class="card pb-5 shadow" style="width: 500px;">
               <div class="card-body">
-                <form action="" method="post">
+                <form action="{{ route('login') }}" method="post">
+                    @csrf
+                    @method('POST')
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">

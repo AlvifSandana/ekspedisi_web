@@ -5,7 +5,7 @@ powered by [Laravel](https://laravel.com/)
 Fitur yang sedang dikerjakan:
 
 #### Authentication
-- [ ] Admin login
+- [x] Admin login
 - [x] (api) Sopir login & register
 - [x] (api) Pengirim login & register
 

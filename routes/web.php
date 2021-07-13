@@ -13,15 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// auth route
+Route::get('/', 'AuthController@showLoginForm')->name('login.form');
+Route::post('login', 'AuthController@login')->name('login');
+Route::get('logout', 'AuthController@logout')->name('logout');
+
 // dashboard route
-Route::get('admin/dashboard', 'DashboardController@index')->name('admin.dashboard.index');
+Route::get('admin/dashboard', 'DashboardController@index')->name('admin.dashboard.index')->middleware('auth');
 
 // tarif route
-Route::get('admin/tarif', 'TarifController@index')->name('admin.tarif.index');
-Route::get('admin/tarif/get', 'TarifController@show')->name('admin.tarif.show');
-Route::post('admin/tarif/add', 'TarifController@createTarif')->name('admin.tarif.create');
-Route::put('admin/tarif/update', 'TarifController@updateTarif')->name('admin.tarif.update');
-Route::delete('admin/tarif/delete/{id}', 'TarifController@deleteTarif')->name('admin.tarif.delete');
+Route::get('admin/tarif', 'TarifController@index')->name('admin.tarif.index')->middleware('auth');
+Route::get('admin/tarif/get', 'TarifController@show')->name('admin.tarif.show')->middleware('auth');
+Route::post('admin/tarif/add', 'TarifController@createTarif')->name('admin.tarif.create')->middleware('auth');
+Route::put('admin/tarif/update', 'TarifController@updateTarif')->name('admin.tarif.update')->middleware('auth');
+Route::delete('admin/tarif/delete/{id}', 'TarifController@deleteTarif')->name('admin.tarif.delete')->middleware('auth');
 
 // jadwal route
 
