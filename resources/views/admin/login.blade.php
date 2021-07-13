@@ -14,7 +14,7 @@
 <body style="background-color: #f2f2f2;">
     <div class="p-3 mb-4">
         <div class="d-flex align-items-center justify-content-center mt-4">
-            <img src="" alt="logo" class="img">
+            <img src="{{ asset('img/logo.png') }}" alt="logo" class="img">
         </div>
         <div class="d-flex align-items-center justify-content-center" style="height: 350px">
           <div class="card pb-5 shadow" style="width: 500px;">

@@ -24,4 +24,4 @@ Route::post('auth/login/pengirim', 'api\AuthController@loginPengirim')->name('ap
 Route::post('auth/reg/supir', 'api\AuthController@registerSupir')->name('api.auth.reg.supir');
 Route::post('auth/login/supir', 'api\AuthController@loginSupir')->name('api.auth.login.supir');
 
-Route::apiResource('tarif', 'api\TarifController');
+Route::apiResource('tarif', 'api\TarifController')->middleware('cektoken');
