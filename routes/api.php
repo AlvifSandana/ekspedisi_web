@@ -23,5 +23,6 @@ Route::post('auth/reg/pengirim', 'api\AuthController@registerPengirim')->name('a
 Route::post('auth/login/pengirim', 'api\AuthController@loginPengirim')->name('api.auth.login.pengirim');
 Route::post('auth/reg/supir', 'api\AuthController@registerSupir')->name('api.auth.reg.supir');
 Route::post('auth/login/supir', 'api\AuthController@loginSupir')->name('api.auth.login.supir');
+Route::post('auth/login/all', 'api\AuthController@login')->name('api.auth.login.all');
 
 Route::apiResource('tarif', 'api\TarifController')->middleware('cektoken');

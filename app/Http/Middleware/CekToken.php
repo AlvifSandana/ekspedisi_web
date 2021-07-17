@@ -31,10 +31,12 @@ class CekToken
                 $pengirim = Pengirim::where('api_token', $token)->first();
 
                 if ($pengirim) {
-                    // if token match with database result
+                    // if token match with database result,
+                    // bypass the request to the next process
                     return $next($request);
                 } else {
-                    // if token mismatch
+                    // if token mismatch,
+                    // return the error message
                     return response()->json([
                         'status'    => 'failed',
                         'message'   => 'token invalid, unauthorized!',
@@ -48,9 +50,11 @@ class CekToken
 
                 if ($supir) {
                     // if token match with database result
+                    // bypass the request to the next process
                     return $next($request);
                 } else {
-                    // if token mismatch
+                    // if token mismatch,
+                    // return the error message
                     return response()->json([
                         'status'    => 'failed',
                         'message'   => 'token invalid, unauthorized!',
@@ -59,7 +63,7 @@ class CekToken
                 }
             }
         } catch (\Throwable $th) {
-            // catch error
+            // catch error, return the error message
             return response()->json([
                 'status'    => 'error',
                 'message'   => $th->getMessage(),

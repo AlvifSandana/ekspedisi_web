@@ -40,7 +40,7 @@ class AuthController extends Controller
                     'status'    => 'failed',
                     'message'   => $validator->errors(),
                     'data'      => []
-                ], 400);
+                ], 200);
             }
             // lolos validasi, menambahkan data pengirim baru
             $pengirim = Pengirim::create([
@@ -56,7 +56,7 @@ class AuthController extends Controller
             return response()->json([
                 'status'    => 'success',
                 'message'   => 'Berhasil register',
-                'data'      => (new PengirimTransformer)->transformWithEmail($pengirim)
+                'data'      => [(new PengirimTransformer)->transformWithEmail($pengirim)]
             ], 201);
         } catch (\Throwable $th) {
             // catch error
@@ -101,7 +101,7 @@ class AuthController extends Controller
                     return response()->json([
                         'status'    => 'success',
                         'message'   => 'Berhasil login',
-                        'data'      => (new PengirimTransformer)->transformWithApiToken($pengirim)
+                        'data'      => [(new PengirimTransformer)->transformWithApiToken($pengirim)]
                     ], 200);
                 } else {
                     // jika password salah
@@ -109,7 +109,7 @@ class AuthController extends Controller
                         'status'    => 'failed',
                         'message'   => 'password salah!',
                         'data'      => []
-                    ], 400);
+                    ], 200);
                 }
             } else {
                 // jika data tidak ditemukan
@@ -117,7 +117,7 @@ class AuthController extends Controller
                     'status'    => 'failed',
                     'message'   => 'Data tidak ditemukan!',
                     'data'      => []
-                ], 404);
+                ], 200);
             }
         } catch (\Throwable $th) {
             // catch error
@@ -157,7 +157,7 @@ class AuthController extends Controller
                     'status'    => 'failed',
                     'message'   => $validator->errors(),
                     'data'      => []
-                ], 400);
+                ], 200);
             }
             // lolos validasi, menambahkan data supir baru
             $supir = Supir::create([
@@ -174,7 +174,7 @@ class AuthController extends Controller
             return response()->json([
                 'status'    => 'success',
                 'message'   => 'Berhasil register',
-                'data'      => (new SupirTransformer)->transformWithEmail($supir)
+                'data'      => [(new SupirTransformer)->transformWithEmail($supir)]
             ], 201);
         } catch (\Throwable $th) {
             // catch error
@@ -219,7 +219,7 @@ class AuthController extends Controller
                     return response()->json([
                         'status'    => 'success',
                         'message'   => 'Berhasil login',
-                        'data'      => (new SupirTransformer)->transformWithApiToken($supir)
+                        'data'      => [(new SupirTransformer)->transformWithApiToken($supir)]
                     ], 200);
                 } else {
                     // jika password salah
@@ -227,7 +227,7 @@ class AuthController extends Controller
                         'status'    => 'failed',
                         'message'   => 'password salah!',
                         'data'      => []
-                    ], 400);
+                    ], 200);
                 }
             } else {
                 // jika data tidak ditemukan
@@ -235,7 +235,80 @@ class AuthController extends Controller
                     'status'    => 'failed',
                     'message'   => 'Data tidak ditemukan!',
                     'data'      => []
-                ], 404);
+                ], 200);
+            }
+        } catch (\Throwable $th) {
+            // catch error
+            return response()->json([
+                'status'    => 'error',
+                'message'   => $th->getMessage(),
+                'data'      => []
+            ], 500);
+        }
+    }
+
+    /**
+     * Login (Pengirim dan Supir)
+     */
+    public function login(Request $request){
+        try {
+            // definisikan rules untuk validasi
+            $rules = [
+                'email'     => 'required',
+                'password'  => 'required|min:8'
+            ];
+            // kustom error message untuk validasi
+            $message = [
+                'required'  => ':attribute tidak boleh kosong!'
+            ];
+            // instansiasi validator
+            $validator = Validator::make($request->all(), $rules, $message);
+            // proses validasi
+            if ($validator->fails()) {
+                return response()->json([
+                    'status'    => 'failed',
+                    'message'   => $validator->errors(),
+                    'data'      => []
+                ]);
+            }
+            // lolos validasi, cek apakah login sebagai
+            // pengirim atau supir
+            $pengirim = Pengirim::where('email', $request->email)->first();
+            $supir = Supir::where('email', $request->email)->first();
+            if ($pengirim) {
+                if (Hash::check($request->password, $pengirim->password)) {
+                    return response()->json([
+                        'status'    => 'success',
+                        'message'   => 'Berhasil login (pengirim)',
+                        'data'      => [(new PengirimTransformer)->transformWithApiToken($pengirim)]
+                    ], 200);
+                } else {
+                    return response()->json([
+                        'status'    => 'failed',
+                        'message'   => 'email atau password salah!',
+                        'data'      => []
+                    ], 200);
+                }
+            } elseif ($supir) {
+                if (Hash::check($request->password, $supir->password)) {
+                    return response()->json([
+                        'status'    => 'success',
+                        'message'   => 'Berhasil login (supir)',
+                        'data'      => [(new SupirTransformer)->transformWithApiToken($supir)]
+                    ], 200);
+                } else {
+                    return response()->json([
+                        'status'    => 'failed',
+                        'message'   => 'email atau password salah!',
+                        'data'      => []
+                    ], 200);
+                }
+            } else {
+                return response()->json([
+                    'status'    => 'failed',
+                    'message'   => 'Data tidak ditemukan',
+                    'data'      => []
+                ], 200);
             }
         } catch (\Throwable $th) {
             // catch error

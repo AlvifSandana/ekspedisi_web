@@ -29,6 +29,7 @@ class PengirimTransformer
     {
         return [
             'nama'          => $pengirim->nama_pengirim,
+            'supir_cadangan'=> '',
             'alamat'        => $pengirim->alamat_pengirim,
             'nomor_telpon'  => $pengirim->nomor_telpon,
             'email'         => $pengirim->email,
