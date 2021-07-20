@@ -29,5 +29,16 @@ Route::put('admin/tarif/update', 'TarifController@updateTarif')->name('admin.tar
 Route::delete('admin/tarif/delete/{id}', 'TarifController@deleteTarif')->name('admin.tarif.delete')->middleware('auth');
 
 // jadwal route
+Route::get('admin/jadwal', 'JadwalController@index')->name('admin.jadwal.index')->middleware('auth');
+Route::get('admin/jadwal/get', 'JadwalController@show')->name('admin.jadwal.show')->middleware('auth');
+Route::post('admin/jadwal/add', 'JadwalController@createJadwal')->name('admin.jadwal.create')->middleware('auth');
+Route::put('admin/jadwal/update', 'JadwalController@updateJadwal')->name('admin.jadwal.update')->middleware('auth');
+Route::delete('admin/jadwal/delete/{id}', 'JadwalController@deleteJadwal')->name('admin.jadwal.delete')->middleware('auth');
 
 // invoice route
+Route::get('admin/invoice', 'InvoiceController@index')->name('admin.invoice.index')->middleware('auth');
+Route::get('admin/invoice/get', 'InvoiceController@show')->name('admin.invoice.show')->middleware('auth');
+Route::post('admin/invoice/add', 'InvoiceController@createInvoice')->name('admin.invoice.create')->middleware('auth');
+Route::put('admin/invoice/update', 'InvoiceController@updateInvoice')->name('admin.invoice.update')->middleware('auth');
+Route::delete('admin/invoice/delete/{id}', 'InvoiceController@deleteInvoice')->name('admin.invoice.delete')->middleware('auth');
+
