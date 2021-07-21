@@ -24,7 +24,7 @@
             <th>Nama Sopir Kiri</th>
             <th>Tanggal</th>
             <th>Anggota</th>
-            <th>Tarif</th>
+            <th></th>
             <th></th>
           </thead>
           <tbody>

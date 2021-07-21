@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 class JadwalController extends Controller
 {
+    /**
+     * show penjadwalan page
+     */
     public function index(){
         return view('admin.penjadwalan');
     }
