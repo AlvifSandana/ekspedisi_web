@@ -50,6 +50,7 @@ class AuthController extends Controller
             if (Hash::check($login_data['password'], $admin->password)) {
                 Auth::attempt($login_data);
                 if (Auth::check()) {
+                    $request->session()->put('name', $admin->name);
                     return redirect()->route('admin.dashboard.index')->with('success', 'Selamat datang, Admin.');
                 } else {
                     return redirect()->route('login.form')->with('error', 'Email atau password salah!');
