@@ -12,28 +12,45 @@
   <hr class="sidebar-divider my-0">
 
   <!-- Nav Item - Dashboard -->
-  <li class="nav-item {{ Request::is('admin/dashboard') ? 'active':'' }}">
+  <li class="nav-item {{ Request::is('admin/dashboard') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('admin.dashboard.index') }}">
       <i class="fas fa-fw fa-chart-pie"></i>
       <span>Dashboard</span></a>
   </li>
 
   <!-- Nav Item - Daftar Tarif -->
-  <li class="nav-item {{ Request::is('admin/tarif*') ? 'active':'' }}">
-    <a class="nav-link" href="{{ route('admin.tarif.index') }}">
+  <li class="nav-item {{ Request::is('admin/tarif*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('admin.tarif.index') }}" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+    aria-controls="collapseOne">
       <i class="fas fa-fw fa-ticket-alt"></i>
       <span>Daftar Tarif</span></a>
+      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <h6 class="collapse-header">Jadwal:</h6>
+          <a class="collapse-item" href="{{ route('admin.tarif.index') }}">Supir</a>
+          <a class="collapse-item" href="#">Pengirim</a>
+        </div>
+      </div>
   </li>
 
   <!-- Nav Item - Daftar Jadwal -->
-  <li class="nav-item {{ Request::is('admin/jadwal*') ? 'active':'' }}">
-    <a class="nav-link" href="{{ route('admin.jadwal.index')}}">
+  <li class="nav-item {{ Request::is('admin/jadwal*') ? 'active' : '' }}">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+      aria-controls="collapseTwo">
       <i class="fas fa-fw fa-book"></i>
-      <span>Daftar Jadwal</span></a>
+      <span>Daftar Jadwal</span>
+    </a>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Jadwal:</h6>
+        <a class="collapse-item" href="{{ route('admin.jadwal.index') }}">Supir</a>
+        <a class="collapse-item" href="#">Pengirim</a>
+      </div>
+    </div>
   </li>
 
   <!-- Nav Item - Invoice -->
-  <li class="nav-item {{ Request::is('admin/invoice*') ? 'active':'' }}">
+  <li class="nav-item {{ Request::is('admin/invoice*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('admin.invoice.index') }}">
       <i class="fas fa-fw fa-users"></i>
       <span>Invoice</span></a>

@@ -14,6 +14,7 @@ Fitur yang sedang dikerjakan:
 - [x] Dashboard
 - [x] Tarif
 - [x] Jadwal
+- [x] Sidebar
 - [ ] Invoice
 - [ ] Settings
 
