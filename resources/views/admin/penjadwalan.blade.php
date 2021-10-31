@@ -28,15 +28,17 @@
             <th></th>
           </thead>
           <tbody>
+            @foreach ($data_jadwal as $j)
             <tr class="text-center mt-3 mb-3" style="background-color: #f7fafc">
-              <td><strong>Boby</strong></td>
-              <td><strong>Tono</strong></td>
+              <td><strong>{{ $j->nama_supir }}</strong></td>
+              <td><strong>{{ $j->nama_supircadang }}</strong></td>
               <td><strong>Jul 6, 2021</strong> <br> 6.31 PM</td>
               <td>
                 <span class="badge badge-pill badge-danger">Baru</span>
               </td>
               <td><i class="fas fa-fw fa-ellipsis-h"></i></td>
             </tr>
+            @endforeach
           </tbody>
         </table>
       </div>
