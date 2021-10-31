@@ -23,7 +23,7 @@
     <div class="col-md-12">
       <div class="table-responsive">
         <table class="table" id="tbl_tarif">
-          <thead class="text-center">
+          <thead class="">
             <th>Nama Tujuan</th>
             <th>Status</th>
             <th>Tarif</th>
@@ -32,7 +32,7 @@
           </thead>
           <tbody>
             @foreach ($tarif as $item)
-              <tr class="text-center mt-3 mb-3" style="background-color: #f7fafc">
+              <tr class="mt-3 mb-3" style="background-color: #f7fafc">
                 <td><strong>{{ $item->titik_pengiriman }} - {{ $item->tujuan_pengiriman }}</strong> <br>
                   <i>{{ $item->keterangan }}</i></td>
                 <td>
