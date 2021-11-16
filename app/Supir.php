@@ -15,6 +15,6 @@ class Supir extends Model
     // mass-assignment
     protected $fillable = [
         'nama_supir', 'nama_supircadang', 'alamat_supir', 'nomor_telpon',
-        'email', 'password', 'api_token'
+        'email', 'password', 'api_token', 'status'
     ];
 }
