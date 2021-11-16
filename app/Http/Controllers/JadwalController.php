@@ -16,7 +16,7 @@ class JadwalController extends Controller
                           ->join('supir', 'jadwal.Kendaraan_Supir_idSupir', '=', 'supir.idSupir')
                           ->select('jadwal.idJadwal', 'kendaraan.*', 'supir.*')
                           ->get();
-        // return json_encode($data_jadwal);
+        // dd($data_jadwal);
         return view('admin.penjadwalan', compact('data_jadwal'));
     }
 
