@@ -34,7 +34,7 @@
               <td><strong>{{ $j->nama_supircadang }}</strong></td>
               <td><strong>Jul 6, 2021</strong> <br> 6.31 PM</td>
               <td>
-                <span class="badge badge-pill badge-danger">Baru</span>
+                <span class="badge badge-pill badge-{{ $j->status == 'baru' ? 'success' : 'danger'}}">{{ $j->status }}</span>
               </td>
               <td><i class="fas fa-fw fa-ellipsis-h"></i></td>
             </tr>
