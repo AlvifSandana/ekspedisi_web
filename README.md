@@ -26,3 +26,4 @@ Fitur yang sedang dikerjakan:
 - [ ] (api) CRUD Pengirim
 - [ ] (api) CRUD Sopir
 - [x] (api) Tarif
+- [x] (api) Jadwal
