@@ -1,5 +1,6 @@
 <?php
 
+use App\Pengirim;
 use Illuminate\Database\Seeder;
 
 class PengirimSeeder extends Seeder
@@ -11,6 +12,6 @@ class PengirimSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(Pengirim::class, 3)->create();
     }
 }
