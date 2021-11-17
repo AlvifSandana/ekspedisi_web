@@ -68,7 +68,7 @@
   {{-- add new Tarif modal --}}
   <div class="modal fade" id="addTarifModal" tabindex="-1" role="dialog" aria-labelledby="addTarifModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Add New Tarif</h5>
@@ -116,7 +116,7 @@
   {{-- edit Tarif modal --}}
   <div class="modal fade" id="editTarifModal" tabindex="-1" role="dialog" aria-labelledby="editTarifModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Edit Tarif</h5>
