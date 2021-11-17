@@ -1,5 +1,6 @@
 <?php
 
+use App\Tarif;
 use Illuminate\Database\Seeder;
 
 class TarifSeeder extends Seeder
@@ -11,6 +12,7 @@ class TarifSeeder extends Seeder
      */
     public function run()
     {
-        //
+        // seed with dummies data
+        factory(Tarif::class, 50)->create();
     }
 }
