@@ -15,8 +15,8 @@ class CreatePengirimsTable extends Migration
     {
         Schema::create('pengirim', function (Blueprint $table) {
             $table->id('idPengirim');
-            $table->string('nama_pengirim', 45);
-            $table->string('alamat_pengirim', 45);
+            $table->string('nama_pengirim');
+            $table->string('alamat_pengirim');
             $table->string('nomor_telpon', 12);
             $table->string('email')->unique();
             $table->string('password');
