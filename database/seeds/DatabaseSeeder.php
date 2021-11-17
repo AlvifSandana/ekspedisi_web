@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SupirSeeder::class);
         $this->call(KendaraanSeeder::class);
         $this->call(PengirimSeeder::class);
+        $this->call(TarifSeeder::class);
     }
 }
