@@ -32,7 +32,7 @@
             <tr class="text-center mt-3 mb-3" style="background-color: #f7fafc">
               <td><strong>{{ $j->nama_supir }}</strong></td>
               <td><strong>{{ $j->nama_supircadang }}</strong></td>
-              <td><strong>Jul 6, 2021</strong> <br> 6.31 PM</td>
+              <td><strong>{{ \Carbon\Carbon::parse($j->tanggal_pemberangkatan)->format('D, d M Y') }}</strong></td>
               <td>
                 <span class="badge badge-pill badge-{{ $j->status == 'baru' ? 'success' : 'danger'}}">{{ $j->status }}</span>
               </td>
