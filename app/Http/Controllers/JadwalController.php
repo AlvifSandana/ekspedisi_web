@@ -14,7 +14,7 @@ class JadwalController extends Controller
         $data_jadwal = DB::table('jadwal')
                           ->join('kendaraan', 'jadwal.Kendaraan_idKendaraan', '=', 'kendaraan.idKendaraan')
                           ->join('supir', 'jadwal.Kendaraan_Supir_idSupir', '=', 'supir.idSupir')
-                          ->select('jadwal.idJadwal', 'kendaraan.*', 'supir.*')
+                          ->select('jadwal.*', 'kendaraan.*', 'supir.*')
                           ->get();
         // dd($data_jadwal);
         return view('admin.penjadwalan', compact('data_jadwal'));
