@@ -12,6 +12,8 @@ class Jadwal extends Model
     protected $primaryKey = 'idJadwal';
     // mass-assignment
     protected $fillable = [
-        'Admin_idAdmin', 'Kendaraan_idKendaraan', 'Kendaraan_Supir_idSupir'
+        'Admin_idAdmin', 'Kendaraan_idKendaraan', 'Kendaraan_Supir_idSupir', 'tanggal_pemberangkatan'
     ];
+    // date columns
+    protected $dates = ['tanggal_pemberangkatan'];
 }
