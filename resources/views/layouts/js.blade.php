@@ -10,4 +10,12 @@
 <script src="https://unpkg.com/feather-icons"></script>
 <script>
     feather.replace();
+
+    $(function() {
+        $('[data-toggle="popover"]').popover()
+    })
+
+    $(function() {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
 </script>
