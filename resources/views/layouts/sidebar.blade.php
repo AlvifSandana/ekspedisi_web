@@ -49,10 +49,24 @@
     </div>
   </li>
 
+  <!-- Nav Item - Transaksi -->
+  <li class="nav-item {{ Request::is('admin/supir*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('admin.supir.index') }}">
+      <i class="fas fa-fw fa-users"></i>
+      <span>Supir</span></a>
+  </li>
+
+  <!-- Nav Item - Transaksi -->
+  <li class="nav-item {{ Request::is('admin/transaksi*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('admin.transaksi.index') }}">
+      <i class="fas fa-fw fa-money-bill"></i>
+      <span>Transaksi</span></a>
+  </li>
+
   <!-- Nav Item - Invoice -->
   <li class="nav-item {{ Request::is('admin/invoice*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('admin.invoice.index') }}">
-      <i class="fas fa-fw fa-users"></i>
+      <i class="fas fa-fw fa-file-invoice-dollar"></i>
       <span>Invoice</span></a>
   </li>
 
