@@ -25,14 +25,14 @@ class JadwalController extends Controller
     }
 
     public function createJadwal(){
-
+        // TODO - method for create jadwal  - 2021/11/27
     }
 
     public function updateJadwal($id){
-
+        // TODO - method update jadwal by id - 2021/11/27
     }
 
     public function deleteJadwal($id){
-
+        // TODO - method for delete jadwal by id - 2021/11/27
     }
 }
