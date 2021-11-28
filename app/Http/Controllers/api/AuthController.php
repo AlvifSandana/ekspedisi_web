@@ -167,7 +167,8 @@ class AuthController extends Controller
                 'nomor_telpon'      => $request->nomor_telpon,
                 'email'             => $request->email,
                 'password'          => Hash::make($request->password),
-                'api_token'         => Hash::make($request->email)
+                'api_token'         => Hash::make($request->email),
+                'status'            => 'baru'
             ]);
             $supir->save();
             // return success
