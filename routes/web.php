@@ -47,3 +47,6 @@ Route::get('admin/transaksi', 'TransaksiController@index')->name('admin.transaks
 
 // Supir route
 Route::get('admin/supir', 'SupirController@index')->name('admin.supir.index')->middleware('auth');
+
+// Muatan route
+Route::get('admin/muatan', 'MuatanController@index')->name('admin.muatan.index')->middleware('auth');
