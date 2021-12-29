@@ -31,7 +31,7 @@
                         <th>Action</th>
                     </thead>
                     <tbody>
-                        @foreach ($data_jadwal as $j)
+                        @foreach ($data['jadwal'] as $j)
                             <tr class="text-center mt-3 mb-3" style="background-color: #f7fafc">
                                 <td><strong>{{ $j->nama_supir }}</strong></td>
                                 <td><strong>{{ $j->nama_supircadang }}</strong></td>
