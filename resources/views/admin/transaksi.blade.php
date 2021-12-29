@@ -28,16 +28,16 @@
                         <th>Status Transaksi</th>
                         <th>Action</th>
                     </thead>
-                    <tbody>
+                    <tbody >
                         @foreach ($data_transaksi as $item)
                             <tr>
                                 <td data-toggle="popover" title="Detail Pengirim" data-content="{{ $item->alamat_pengirim }}. Telepon : {{ $item->nomor_telpon }}">
                                     {{ $item->nama_pengirim }}
                                 </td>
-                                <td data-toggle="popover" title="Detail Barang" data-content="{{ $item->jenis_barang }} seberat {{ $item->berat_barang }}">
+                                <td class="text-center" data-toggle="popover" title="Detail Barang" data-content="{{ $item->jenis_barang }} seberat {{ $item->berat_barang }}">
                                     {{ $item->nama_barang }}
                                 </td>
-                                <td>{{ $item->status }}</td>
+                                <td class="text-center">{{ $item->status }}</td>
                                 <td class="text-center">
                                     <div class="dropdown no-arrow">
                                         <i class="fas fa-fw fa-ellipsis-h" data-toggle="dropdown" aria-haspopup="true"

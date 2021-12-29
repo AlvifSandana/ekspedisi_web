@@ -43,21 +43,74 @@
                                         <i class="fas fa-fw fa-ellipsis-h" data-toggle="dropdown" aria-haspopup="true"
                                             aria-expanded="false"></i>
                                         <div class="dropdown-menu">
-                                            <a href="#edit" class="dropdown-item text-warning">
+                                            <a href="#edit" class="dropdown-item text-warning edit" data-toggle="modal" data-target="#updateSupirModal" data-id="{{ $s->idSupir }}">
                                                 <i class="fas fa-fw fa-edit "></i>
                                                 Edit
                                             </a>
-                                            <a href="#hapus" class="dropdown-item text-danger">
+                                            <a href="#hapus" class="dropdown-item text-danger" onclick="deleteConfirm('delete-data')">
                                                 <i class="fas fa-fw fa-trash "></i>
                                                 Hapus
                                             </a>
                                         </div>
                                     </div>
+                                    <form id="delete-data" action="{{ route('admin.supir.delete', $s->idSupir) }}"
+                                        method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+    {{-- modal update supir --}}
+    <div class="modal fade" id="updateSupirModal" tabindex="-1" role="dialog" aria-labelledby="updateSupirModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Update Supir</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('admin.supir.update') }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <input type="text" name="idSupir" id="update_id" hidden>
+                        <div class="form-group">
+                            <label for="nama_supir" class="col-form-label">Nama Supir:</label>
+                            <input type="text" class="form-control" name="nama_supir" id="nama_supir">
+                        </div>
+                        <div class="form-group">
+                            <label for="nama_supir_cadang" class="col-form-label">Nama Supir Cadangan:</label>
+                            <input type="text" class="form-control" name="nama_supir_cadang" id="nama_supir_cadang">
+                        </div>
+                        <div class="form-group">
+                            <label for="alamat_supir" class="col-form-label">Tujuan Pengiriman:</label>
+                            <input type="text" class="form-control" name="alamat_supir" id="alamat_supir">
+                        </div>
+                        <div class="form-group">
+                            <label for="nomor_telpon" class="col-form-label">nomor_telpon:</label>
+                            <input type="number" class="form-control" name="nomor_telpon" id="nomor_telpon">
+                        </div>
+                        <div class="form-group">
+                            <label for="status">Status:</label>
+                            <select name="status" class="form-control" id="status">
+                                <option value="baru">Baru</option>
+                                <option value="utama">Utama</option>
+                            </select>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -70,6 +123,42 @@
         $(document).ready(function() {
             // datatables
             $('#tbl_supir').DataTable();
+
+            // alert hapus tarif
+            window.deleteConfirm = function(idForm) {
+                Swal.fire({
+                    title: 'Hapus data supir?',
+                    text: "Proses ini tidak bisa dibatalkan.",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Hapus',
+                    cancelButtonText: 'Batal'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById(idForm).submit();
+                    }
+                });
+            }
+
+            // update modal
+            $('.edit').on('click', function() {
+                var id = $(this).data('id');
+                $.ajax({
+                    url: "{{ route('admin.supir.show') }}?id=" + id,
+                    type: "GET",
+                    dataType: "JSON",
+                    success: function(data) {
+                        $('#update_id').val(data.idSupir);
+                        $('#nama_supir').val(data.nama_supir);
+                        $('#nama_supir_cadang').val(data.nama_supircadang);
+                        $('#nomor_telpon').val(data.nomor_telpon);
+                        $('#alamat_supir').val(data.alamat_supir);
+                        $('#status').val(data.status);
+                    }
+                })
+            })
         })
     </script>
 @endsection

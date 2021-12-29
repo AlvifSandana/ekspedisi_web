@@ -47,6 +47,9 @@ Route::get('admin/transaksi', 'TransaksiController@index')->name('admin.transaks
 
 // Supir route
 Route::get('admin/supir', 'SupirController@index')->name('admin.supir.index')->middleware('auth');
+Route::get('admin/supir/get', 'SupirController@show')->name('admin.supir.show')->middleware('auth');
+Route::put('admin/supir/update', 'SupirController@updateSupir')->name('admin.supir.update')->middleware('auth');
+Route::delete('admin/supir/delete/{id}', 'SupirController@deleteSupir')->name('admin.supir.delete')->middleware('auth');
 
 // Muatan route
 Route::get('admin/muatan', 'MuatanController@index')->name('admin.muatan.index')->middleware('auth');
