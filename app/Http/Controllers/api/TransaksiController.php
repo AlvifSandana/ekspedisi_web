@@ -68,10 +68,26 @@ class TransaksiController extends Controller
                 'berat_barang' => $request->berat_barang,
                 'Pengirim_idPengirim' => $request->idpengirim
             ]);
-            $barang->save();
-            //
+            // simpan data
+            if ($barang->save()) {
+                return response()->json([
+                    'status' => 'success',
+                    'message'=> 'Berhasil memproses pengiriman!',
+                    'data' => []
+                ]);
+            } else {
+                return response()->json([
+                    'status' => 'failed',
+                    'message'=> 'Gagal memproses pengiriman!',
+                    'data' => []
+                ]);
+            }
         } catch (\Throwable $th) {
-
+            return response()->json([
+                'status' => 'error',
+                'message'=> $th->getMessage(),
+                'data' => $th->getTrace()
+            ]);
         }
     }
 

@@ -44,6 +44,7 @@ Route::delete('admin/invoice/delete/{id}', 'InvoiceController@deleteInvoice')->n
 
 // transaksi route
 Route::get('admin/transaksi', 'TransaksiController@index')->name('admin.transaksi.index')->middleware('auth');
+Route::put('admin/transaksi/acc_transaksi', 'TransaksiController@accTransaksi')->name('admin.transaksi.acc')->middleware('auth');
 
 // Supir route
 Route::get('admin/supir', 'SupirController@index')->name('admin.supir.index')->middleware('auth');

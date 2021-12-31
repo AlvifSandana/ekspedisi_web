@@ -28,7 +28,7 @@
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">Tarif:</h6>
           <a class="collapse-item" href="{{ route('admin.tarif.index') }}">Supir</a>
-          <a class="collapse-item" href="#">Pengirim</a>
+          <a class="collapse-item" href="{{ route('admin.tarif.index') }}">Pengirim</a>
         </div>
       </div>
   </li>
