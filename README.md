@@ -20,11 +20,11 @@ Fitur yang sedang dikerjakan:
 
 #### Process
 - [x] CRUD Tarif
-- [ ] CRUD Jadwal
+- [x] CRUD Jadwal
 - [ ] CRUD Invoice
 - [ ] CRUD Settings
-- [ ] (api) CRUD Pengirim
-- [ ] (api) CRUD Sopir
+- [x] (api) CRUD Pengirim
+- [x] (api) CRUD Sopir
 - [x] (api) Tarif
 - [x] (api) Jadwal
 
