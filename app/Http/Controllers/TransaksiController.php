@@ -66,7 +66,7 @@ class TransaksiController extends Controller
                 'idTransaksi'  => 'required',
                 'Admin_idAdmin' => 'required',
                 'Barang_idBarang' => 'required',
-                'Barang_Pengirim_idPegirim' => 'required',
+                'Barang_Pengirim_idPengirim' => 'required',
                 'status' => 'required'
             ];
             // kustom message validasi
@@ -90,19 +90,19 @@ class TransaksiController extends Controller
             $invoice = new Invoice;
             // create jadwal baru
             $jadwal->Admin_idAdmin = $request->input('Admin_idAdmin');
-            $jadwal->Kendaraan_idKendaraan = $kendaraan->Kendaraan_idKendaraan;
-            $jadwal->Kendaraan_Supir_id_supir = $kendaraan->Kendaraan_Supir_idSupir;
+            $jadwal->Kendaraan_idKendaraan = $kendaraan->idKendaraan;
+            $jadwal->Kendaraan_Supir_idSupir = $kendaraan->Supir_idSupir;
             $jadwal->tanggal_pemberangkatan = $request->input('tanggal_pemberangkatan');
             $jadwal->save();
             // create invoice baru
             $invoice->Transaksi_id_Transaksi = $request->input('idTransaksi');
             $invoice->Transaksi_Admin_idAdmin = $request->input('Admin_idAdmin');
-            $invoice->Transaksi_Barang_idBarang = $request->input('');
-            $invoice->Transaksi_Barang_Pengirim_idPengirim = $request->input('');
+            $invoice->Transaksi_Barang_idBarang = $request->input('Barang_idBarang');
+            $invoice->Transaksi_Barang_Pengirim_idPengirim = $request->input('Barang_Pengirim_idPengirim');
             $invoice->Jadwal_idJadwal = $jadwal->idJadwal;
             $invoice->Jadwal_Admin_idAdmin = $jadwal->Admin_idAdmin;
-            $invoice->Jadwal_Kendaraan_idKendaraan = $kendaraan->Kendaraan_idKendaraan;
-            $invoice->Jadwal_Kendaraan_Supir_idSupir = $kendaraan->Kendaraan_Supir_idSupir;
+            $invoice->Jadwal_Kendaraan_idKendaraan = $kendaraan->idKendaraan;
+            $invoice->Jadwal_Kendaraan_Supir_idSupir = $kendaraan->Supir_idSupir;
             $invoice->save();
             return redirect()->route('admin.transaksi.index')->with('success', 'Berhasil memproses transaksi!');
         } catch (\Throwable $th) {

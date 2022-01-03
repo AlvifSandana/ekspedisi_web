@@ -112,7 +112,12 @@
                         <div class="form-group">
                             <label for="status" class="col-form-label">Status:</label>
                             <input type="text" class="form-control" name="status"
-                                id="status" disabled>
+                                id="status">
+                        </div>
+                        <div class="form-group">
+                            <label for="status" class="col-form-label">Tanggal Pemberangkatan:</label>
+                            <input type="date" class="form-control" name="tanggal_pemberangkatan"
+                                id="tanggal_pemberangkatan">
                         </div>
                         <div class="form-group">
                             <label for="Pilih Supir" class="col-form-label">Pilih Supir:</label>
@@ -151,6 +156,7 @@
                 dataType: "JSON",
                 success: function(data) {
                     $('#idTransaksi').val(data[0].idTransaksi)
+                    $('#Admin_idAdmin').val(data[0].Admin_idAdmin)
                     $('#Barang_Pengirim_idPengirim').val(data[0].idPengirim)
                     $('#Barang_idBarang').val(data[0].idBarang)
                     $('#nama_pengirim').val(data[0].nama_pengirim)
@@ -159,6 +165,7 @@
                     $('#nama_barang').val(data[0].nama_barang)
                     $('#jenis_barang').val(data[0].jenis_barang)
                     $('#berat_barang').val(data[0].berat_barang)
+                    $('#tanggal_pemberangkatan').val(data[0].tanggal_muat)
                 }
             })
         }
