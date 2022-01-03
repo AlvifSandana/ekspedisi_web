@@ -109,4 +109,13 @@ class TransaksiController extends Controller
             return redirect()->route('admin.transaksi.index')->with('error', $th->getMessage());
         }
     }
+
+    /**
+     * method untuk meghapus transaksi by id
+     */
+    public function deleteTransaksi($id)
+    {
+        Transaksi::where('idTransaksi', $id)->delete();
+        return back()->with('success', 'Data transaksi berhasil dihapus.');
+    }
 }

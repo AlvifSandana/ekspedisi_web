@@ -52,7 +52,7 @@
                                                 <i class="fas fa-fw fa-check "></i>
                                                 Proses Transaksi
                                             </a>
-                                            <a href="#hapus" class="dropdown-item text-danger">
+                                            <a href="{{ route('admin.transaksi.delete', $item->idTransaksi) }}" class="dropdown-item text-danger">
                                                 <i class="fas fa-fw fa-trash "></i>
                                                 Hapus
                                             </a>
