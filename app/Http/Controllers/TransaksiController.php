@@ -29,6 +29,33 @@ class TransaksiController extends Controller
     }
 
     /**
+     * method untuk mengambil data transaksi
+     * by id
+     */
+    public function getTransaksiById(Request $request)
+    {
+        try {
+            // get id transaksi
+            $id = $request->get('id');
+            if ($id != '') {
+                // get data transaksi
+                $data_transaksi = DB::table('transaksi')
+                    ->join('barang', 'Barang_idBarang', '=', 'barang.idBarang')
+                    ->join('muatan', 'Barang_pengirim_idPengirim', '=', 'muatan.pengirim_id')
+                    ->join('pengirim', 'Barang_Pengirim_idPengirim', '=', 'pengirim.idPengirim')
+                    ->select('transaksi.*', 'barang.*', 'pengirim.idPengirim', 'pengirim.nama_pengirim', 'pengirim.alamat_pengirim', 'pengirim.nomor_telpon', 'muatan.*')
+                    ->where('idTransaksi', '=', $id)
+                    ->get();
+                return json_encode($data_transaksi);
+            } else {
+                return json_encode('404 Not found');
+            }
+        } catch (\Throwable $th) {
+            return json_encode($th->getMessage());
+        }
+    }
+
+    /**
      * method untuk memproses transaksi
      */
     public function accTransaksi(Request $request)
@@ -40,7 +67,6 @@ class TransaksiController extends Controller
                 'Admin_idAdmin' => 'required',
                 'Barang_idBarang' => 'required',
                 'Barang_Pengirim_idPegirim' => 'required',
-                'idSupir' => 'required',
                 'status' => 'required'
             ];
             // kustom message validasi
@@ -69,17 +95,18 @@ class TransaksiController extends Controller
             $jadwal->tanggal_pemberangkatan = $request->input('tanggal_pemberangkatan');
             $jadwal->save();
             // create invoice baru
-            $invoice->Transaksi_id_Transaksi = 0;
-            $invoice->Transaksi_Admin_idAdmin = 0;
-            $invoice->Transaksi_Barang_idBarang = 0;
-            $invoice->Transaksi_Barang_Pengirim_idPengirim = 0;
-            $invoice->Jadwal_idJadwal = 0;
-            $invoice->Jadwal_Admin_idAdmin = 0;
-            $invoice->Jadwal_Kendaraan_idKendaraan = 0;
-            $invoice->Jadwal_Kendaraan_Supir_idSupir = 0;
+            $invoice->Transaksi_id_Transaksi = $request->input('idTransaksi');
+            $invoice->Transaksi_Admin_idAdmin = $request->input('Admin_idAdmin');
+            $invoice->Transaksi_Barang_idBarang = $request->input('');
+            $invoice->Transaksi_Barang_Pengirim_idPengirim = $request->input('');
+            $invoice->Jadwal_idJadwal = $jadwal->idJadwal;
+            $invoice->Jadwal_Admin_idAdmin = $jadwal->Admin_idAdmin;
+            $invoice->Jadwal_Kendaraan_idKendaraan = $kendaraan->Kendaraan_idKendaraan;
+            $invoice->Jadwal_Kendaraan_Supir_idSupir = $kendaraan->Kendaraan_Supir_idSupir;
             $invoice->save();
+            return redirect()->route('admin.transaksi.index')->with('success', 'Berhasil memproses transaksi!');
         } catch (\Throwable $th) {
-
+            return redirect()->route('admin.transaksi.index')->with('error', $th->getMessage());
         }
     }
 }
