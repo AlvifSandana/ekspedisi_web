@@ -62,14 +62,14 @@ class TransaksiController extends Controller
                 ], 200);
             }
             // lolos validasi, create barang
-            $barang = Barang::create([
-                'nama_barang' => $request->jenis_barang,
-                'jenis_barang' => $request->jenis_barang,
-                'berat_barang' => $request->berat_barang,
-                'Pengirim_idPengirim' => $request->idpengirim
-            ]);
+            $barang = new Barang;
+            $barang->nama_barang = $request->jenis_barang;
+            $barang->jenis_barang = $request->jenis_barang;
+            $barang->berat_barang = $request->berat_barang;
+            $barang->Pengirim_idPengirim = $request->idpengirim;
             // simpan data
             if ($barang->save()) {
+                
                 return response()->json([
                     'status' => 'success',
                     'message'=> 'Berhasil memproses pengiriman!',

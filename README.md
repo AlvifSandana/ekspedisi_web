@@ -15,14 +15,13 @@ Fitur yang sedang dikerjakan:
 - [x] Tarif
 - [x] Jadwal
 - [x] Sidebar
-- [ ] Invoice
+- [x] Invoice
 - [ ] Settings
 
 #### Process
 - [x] CRUD Tarif
 - [x] CRUD Jadwal
 - [ ] CRUD Invoice
-- [ ] CRUD Settings
 - [x] (api) CRUD Pengirim
 - [x] (api) CRUD Sopir
 - [x] (api) Tarif
