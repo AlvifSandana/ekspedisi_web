@@ -25,7 +25,7 @@
                         <div class="text-md font-weight-bold text-primary mb-1">
                             Truck Tersedia
                         </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">25</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">---</div>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                         <div class="text-md font-weight-bold text-primary mb-1">
                             Truck Muat
                         </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">15</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">---</div>
                     </div>
                 </div>
             </div>
@@ -53,7 +53,7 @@
                         <div class="text-md font-weight-bold text-primary mb-1">
                             Muatan
                         </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">25</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">---</div>
                     </div>
                 </div>
             </div>
@@ -67,7 +67,7 @@
                         <div class="text-md font-weight-bold text-primary mb-1">
                             Di Perjalanan
                         </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">15</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">---</div>
                     </div>
                 </div>
             </div>
@@ -83,7 +83,7 @@
                         <div class="text-md font-weight-bold text-gray-800 text-uppercase">Daftar Anggota</div>
                     </div>
                     <div class="col-md-6">
-                        <a href="#" class="text-primary float-right">View All</a>
+                        <a href="{{ route('admin.supir.index') }}" class="text-primary float-right">View All</a>
                     </div>
                 </div>
             </div>
