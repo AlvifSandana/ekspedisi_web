@@ -16,7 +16,7 @@ class CreateMuatanTable extends Migration
         Schema::create('muatan', function (Blueprint $table) {
             $table->id('idMuatan');
             $table->string('nama_muatan');
-            $table->foreignId('pengirim_id')->constrained('pengirim', 'idPengirim')->onDelete('cascade');
+            $table->foreignId('pengirim_id')->constrained('pengirim', 'idPengirim')->onUpdate('cascade');
             $table->date('tanggal_muat');
             $table->string('lokasi_kirim');
             $table->string('catatan_muatan')->nullable();

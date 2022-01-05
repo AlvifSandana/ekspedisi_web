@@ -18,7 +18,7 @@ class CreateKendaraansTable extends Migration
             $table->string('jenis_kendaraan', 45);
             $table->string('plat_kendaraan', 45);
             $table->string('tahun_kendaraan', 45);
-            $table->foreignId('Supir_idSupir')->constrained('supir', 'idSupir')->onDelete('cascade');
+            $table->foreignId('Supir_idSupir')->constrained('supir', 'idSupir')->onUpdate('cascade');
             $table->timestamps();
         });
     }

@@ -18,7 +18,7 @@ class CreateBarangsTable extends Migration
             $table->string('nama_barang', 45);
             $table->string('jenis_barang', 45);
             $table->string('berat_barang', 45);
-            $table->foreignId('Pengirim_idPengirim')->constrained('pengirim', 'idPengirim')->onDelete('cascade');
+            $table->foreignId('Pengirim_idPengirim')->constrained('pengirim', 'idPengirim')->onUpdate('cascade');
             $table->timestamps();
         });
     }

@@ -12,6 +12,6 @@ class PengirimSeeder extends Seeder
      */
     public function run()
     {
-        factory(Pengirim::class, 3)->create();
+        factory(Pengirim::class, 10)->create();
     }
 }

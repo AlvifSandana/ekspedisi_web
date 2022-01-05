@@ -15,9 +15,9 @@ class CreateJadwalsTable extends Migration
     {
         Schema::create('jadwal', function (Blueprint $table) {
             $table->id('idJadwal');
-            $table->foreignId('Admin_idAdmin')->constrained('admin', 'idAdmin')->onDelete('cascade');
-            $table->foreignId('Kendaraan_idKendaraan')->constrained('kendaraan', 'idKendaraan')->onDelete('cascade');
-            $table->foreignId('Kendaraan_Supir_idSupir')->constrained('kendaraan', 'Supir_idSupir')->onDelete('cascade');
+            $table->foreignId('Admin_idAdmin')->constrained('admin', 'idAdmin')->onUpdate('cascade');
+            $table->foreignId('Kendaraan_idKendaraan')->constrained('kendaraan', 'idKendaraan')->onUpdate('cascade');
+            $table->foreignId('Kendaraan_Supir_idSupir')->constrained('kendaraan', 'Supir_idSupir')->onUpdate('cascade');
             $table->timestamps();
         });
     }
