@@ -15,7 +15,7 @@ class Admin extends Model
     // mass-assignment
     protected $fillable = [
         'nama_admin', 'alamat_admin', 'nomor_telpon',
-        'email', 'password', 'api_token'
+        'email', 'password', 'api_token', 'remember_token'
     ];
     // hidden kolom
     protected $hidden = [

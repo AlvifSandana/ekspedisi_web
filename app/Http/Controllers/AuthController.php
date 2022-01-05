@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Admin;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -19,6 +20,14 @@ class AuthController extends Controller
             return redirect()->route('admin.dashboard.index');
         }
         return view('admin.login');
+    }
+
+    /**
+     * show register form
+     */
+    public function showRegisterForm()
+    {
+        return view('admin.register');
     }
 
     /**
@@ -72,6 +81,8 @@ class AuthController extends Controller
         // validation rules
         $rules = [
             'nama_admin'      => 'required',
+            'alamat_admin'      => 'required',
+            'nomor_telpon'      => 'required',
             'email'     => 'required|email',
             'password'  => 'required'
         ];
@@ -88,21 +99,32 @@ class AuthController extends Controller
         }
         // login data
         $login_data = [
-            'name'      => $request->input('name'),
+            'name'      => $request->input('nama_admin'),
+            'alamat_admin'      => $request->input('alamat_admin'),
+            'nomor_telpon'      => $request->input('nomor_telpon'),
             'email'     => $request->input('email'),
             'password'  => $request->input('password')
         ];
         // create model instance
         $admin = new Admin;
+        $user = new User;
         // insert data
-        $admin->name = $login_data['name'];
+        $admin->nama_admin = $login_data['name'];
+        $admin->alamat_admin = $login_data['alamat_admin'];
+        $admin->nomor_telpon = $login_data['nomor_telpon'];
         $admin->email = $login_data['email'];
         $admin->password = Hash::make($login_data['password']);
+        $admin->remember_token = Hash::make($login_data['email']);
+
+        $user->name = $login_data['name'];
+        $user->email = $login_data['email'];
+        $user->password = Hash::make($login_data['password']);
+        $user->setRememberToken(Hash::make($login_data['email']));
         // save data
-        if ($admin->save()) {
-            return redirect()->route('login.form')->with('success', 'Selamat datang, Admin.');
+        if ($admin->save() && $user->save()) {
+            return redirect()->route('login.form')->with('success', 'Registrasi berhasil, silahkan login untuk memulai sesi!');
         } else {
-            return redirect()->route('login.form')->with('error', 'Email atau password salah!');
+            return redirect()->route('login.form')->with('error', 'Registrasi gagal!');
         }
     }
 

@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 // auth route
 Route::get('/', 'AuthController@showLoginForm')->name('login.form');
 Route::post('login', 'AuthController@login')->name('login');
+Route::get('register', 'AuthController@showRegisterForm')->name('register.form');
+Route::post('register', 'AuthController@register')->name('register');
 Route::get('logout', 'AuthController@logout')->name('logout');
 
 // dashboard route
