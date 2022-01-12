@@ -27,3 +27,4 @@ Route::post('auth/login/all', 'api\AuthController@login')->name('api.auth.login.
 
 Route::apiResource('tarif', 'api\TarifController')->middleware('cektoken');
 Route::apiResource('jadwal', 'api\JadwalController')->middleware('cektoken');
+Route::apiResource('transaksi', 'api\TransaksiController')->middleware('cektoken');

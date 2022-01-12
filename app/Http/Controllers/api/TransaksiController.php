@@ -4,8 +4,10 @@ namespace App\Http\Controllers\api;
 
 use App\Barang;
 use App\Http\Controllers\Controller;
+use App\Muatan;
 use App\Transaksi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class TransaksiController extends Controller
@@ -17,7 +19,6 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-
     }
 
     /**
@@ -42,7 +43,7 @@ class TransaksiController extends Controller
         try {
             // rules untuk validasi data
             $rules = [
-                'idpengirim' => 'required',
+                'idPengirim' => 'required',
                 'jenis_barang' => 'requierd',
                 'tanggal_muat' => 'required',
                 'lokasi_kirim' => 'required',
@@ -54,7 +55,7 @@ class TransaksiController extends Controller
             // instansiasi validator
             $validator = Validator::make($request->all(), $rules, $message);
             // validasi data
-            if ($validator->fails()){
+            if ($validator->fails()) {
                 return response()->json([
                     'status' => 'failed',
                     'message' => $validator->errors(),
@@ -66,26 +67,47 @@ class TransaksiController extends Controller
             $barang->nama_barang = $request->jenis_barang;
             $barang->jenis_barang = $request->jenis_barang;
             $barang->berat_barang = $request->berat_barang;
-            $barang->Pengirim_idPengirim = $request->idpengirim;
+            $barang->Pengirim_idPengirim = $request->idPengirim;
+            // create muatan
+            $muatan = new Muatan;
+            $muatan->nama_muatan = $request->nama_barang;
+            $muatan->pengirim_id = $request->idPengirim;
+            $muatan->tanggal_muat = $request->tanggal_muat;
+            $muatan->lokasi_kirim = $request->lokasi_kirim;
+            $muatan->catatan_muatan = $request->catatan_muatan;
             // simpan data
-            if ($barang->save()) {
-                
-                return response()->json([
-                    'status' => 'success',
-                    'message'=> 'Berhasil memproses pengiriman!',
-                    'data' => []
-                ]);
+            if ($barang->save() && $muatan->save()) {
+                // create transaksi
+                $transaksi = new Transaksi;
+                $transaksi->Admin_idAdmin = 1;
+                $transaksi->Barang_idBarang = $muatan->idMuatan;
+                $transaksi->Barang_Pengirim_idPengirim = $request->idPengirim;
+                $$transaksi->status = 'tertunda';
+                // simpan data transaksi
+                if ($transaksi->save()) {
+                    return response()->json([
+                        'status' => 'success',
+                        'message' => 'Berhasil memproses pengiriman!',
+                        'data' => []
+                    ]);
+                } else {
+                    return response()->json([
+                        'status' => 'failed',
+                        'message' => 'Gagal memproses pengiriman!',
+                        'data' => []
+                    ]);
+                }
             } else {
                 return response()->json([
                     'status' => 'failed',
-                    'message'=> 'Gagal memproses pengiriman!',
+                    'message' => 'Gagal memproses pengiriman!',
                     'data' => []
                 ]);
             }
         } catch (\Throwable $th) {
             return response()->json([
                 'status' => 'error',
-                'message'=> $th->getMessage(),
+                'message' => $th->getMessage(),
                 'data' => $th->getTrace()
             ]);
         }
@@ -97,9 +119,46 @@ class TransaksiController extends Controller
      * @param  \App\Transaksi  $transaksi
      * @return \Illuminate\Http\Response
      */
-    public function show(Transaksi $transaksi)
+    public function show($idPengirim)
     {
-        //
+        try {
+            if ($idPengirim != '') {
+                // get data transaksi
+                $data_transaksi = DB::table('transaksi')
+                    ->join('barang', 'Barang_idBarang', '=', 'barang.idBarang')
+                    ->join('muatan', 'Barang_pengirim_idPengirim', '=', 'muatan.pengirim_id')
+                    ->join('pengirim', 'Barang_Pengirim_idPengirim', '=', 'pengirim.idPengirim')
+                    ->select('transaksi.*', 'barang.*', 'pengirim.idPengirim', 'pengirim.nama_pengirim', 'pengirim.alamat_pengirim', 'pengirim.nomor_telpon', 'muatan.*')
+                    ->where('Barang_Pengirim_idPengirim', '=', $idPengirim)
+                    ->get();
+
+                if ($data_transaksi) {
+                    return json_encode([
+                        'status' => 'success',
+                        'message' => 'Data tersedia',
+                        'data' => $data_transaksi
+                    ]);
+                } else {
+                    return json_encode([
+                        'status' => 'failed',
+                        'message' => 'Data tidak tersedia',
+                        'data' => []
+                    ]);
+                }
+            } else {
+                return json_encode([
+                    'status' => 'success',
+                    'message' => 'Data tersedia',
+                    'data' => []
+                ]);
+            }
+        } catch (\Throwable $th) {
+            return json_encode([
+                'status' => 'error',
+                'message'=> $th->getMessage(),
+                'data' => $th->getTraceAsString()
+            ]);
+        }
     }
 
     /**

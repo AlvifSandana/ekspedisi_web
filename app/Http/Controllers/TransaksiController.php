@@ -6,6 +6,7 @@ use App\Invoice;
 use App\Jadwal;
 use App\Kendaraan;
 use App\Transaksi;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -93,18 +94,20 @@ class TransaksiController extends Controller
             $jadwal->Kendaraan_idKendaraan = $kendaraan->idKendaraan;
             $jadwal->Kendaraan_Supir_idSupir = $kendaraan->Supir_idSupir;
             $jadwal->tanggal_pemberangkatan = $request->input('tanggal_pemberangkatan');
-            $jadwal->save();
-            // create invoice baru
-            $invoice->Transaksi_id_Transaksi = $request->input('idTransaksi');
-            $invoice->Transaksi_Admin_idAdmin = $request->input('Admin_idAdmin');
-            $invoice->Transaksi_Barang_idBarang = $request->input('Barang_idBarang');
-            $invoice->Transaksi_Barang_Pengirim_idPengirim = $request->input('Barang_Pengirim_idPengirim');
-            $invoice->Jadwal_idJadwal = $jadwal->idJadwal;
-            $invoice->Jadwal_Admin_idAdmin = $jadwal->Admin_idAdmin;
-            $invoice->Jadwal_Kendaraan_idKendaraan = $kendaraan->idKendaraan;
-            $invoice->Jadwal_Kendaraan_Supir_idSupir = $kendaraan->Supir_idSupir;
-            $invoice->save();
-            return redirect()->route('admin.transaksi.index')->with('success', 'Berhasil memproses transaksi!');
+            if ($jadwal->save()) {
+                // create invoice baru
+                $invoice->Transaksi_id_Transaksi = $request->input('idTransaksi');
+                $invoice->Transaksi_Admin_idAdmin = $request->input('Admin_idAdmin');
+                $invoice->Transaksi_Barang_idBarang = $request->input('Barang_idBarang');
+                $invoice->Transaksi_Barang_Pengirim_idPengirim = $request->input('Barang_Pengirim_idPengirim');
+                $invoice->Jadwal_idJadwal = $jadwal->idJadwal;
+                $invoice->Jadwal_Admin_idAdmin = $jadwal->Admin_idAdmin;
+                $invoice->Jadwal_Kendaraan_idKendaraan = $kendaraan->idKendaraan;
+                $invoice->Jadwal_Kendaraan_Supir_idSupir = $kendaraan->Supir_idSupir;
+                if ($invoice->save()) {
+                    return redirect()->route('admin.transaksi.index')->with('success', 'Berhasil memproses transaksi!');
+                }
+            }
         } catch (\Throwable $th) {
             return redirect()->route('admin.transaksi.index')->with('error', $th->getMessage());
         }

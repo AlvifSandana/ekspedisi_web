@@ -19,6 +19,7 @@
         <div class="d-flex align-items-center justify-content-center" style="height: 350px">
           <div class="card pb-5 shadow" style="width: 500px;">
               <div class="card-body">
+                  @include('layouts.flashmsg')
                 <form action="{{ route('login') }}" method="post">
                     @csrf
                     @method('POST')

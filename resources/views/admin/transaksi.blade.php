@@ -46,7 +46,7 @@
                                             aria-expanded="false"></i>
                                         <div class="dropdown-menu">
                                             <a href="#edit" class="dropdown-item text-success"
-                                                onclick="byId({{ $item->idTransaksi }})"
+                                                onclick="byId('{{ $item->idTransaksi }}')"
                                                 data-toggle="modal"
                                                 data-target="#accTransaksiModal">
                                                 <i class="fas fa-fw fa-check "></i>
@@ -111,8 +111,12 @@
                         </div>
                         <div class="form-group">
                             <label for="status" class="col-form-label">Status:</label>
-                            <input type="text" class="form-control" name="status"
+                            <select class="form-control" name="status"
                                 id="status">
+                                <option value="tertunda">Tertunda</option>
+                                <option value="diproses">Diproses</option>
+                                <option value="selesai">Selesai</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="status" class="col-form-label">Tanggal Pemberangkatan:</label>

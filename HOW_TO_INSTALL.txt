@@ -1,0 +1,13 @@
+Langkah install Laravel App pada XAMPP Windows:
+
+1. Ekstrak file 'laravel_ekspedisi.zip' ke dalam folder 'htdocs' (letak default: C:\xampp\htdocs\ ) dengan cara klik kanan pada file tersebut lalu pilih 'Extract here'.
+2. Hidupkan XAMPP lalu start Apache dan MySQL.
+3. Buka browser, lalu ketik alamat localhost/phpmyadmin untuk membuka PHPMyAdmin.
+4. Setelah terbuka, buat database baru dengan nama 'db_ekspedisi_mlg'.
+5. Import database dengan cara klik menu Import, lalu klik tombol 'Choose File' dan arahkan menuju file 'db_ekspedisi_mlg.sql' di dalam folder yang telah diekstrak sebelumnya. Scroll ke bawah lalu klik tombol Go.
+6. Masuk ke menu XAMPP, klik tombol 'Shell' lalu tunggu hingga muncul sebuah terminal.
+7. Setelah muncul terminal, ketik 'cd htdocs/ekspedisi_web' tanpa tanda kutip, lalu tekan enter.
+8. Ketik 'ipconfig' lalu tekan Enter. Catat 'IPv4 Address' yang muncul pada terminal.
+9. Ketik 'php artisan serve --host=xxx.xxx.xxx.xxx --port=8000' lalu tekan Enter (*Ganti xxx dengan IPv4 yang telah dicatat pada langkah ke-8).
+10. Buka tab baru pada browser, lalu ketik url 'xxx.xxx.xxx.xxx:8000' tekan Enter (* Ganti xxx dengan IPv4 yang telah dicatat pada langkah ke-8).
+11. Login dengan akun default berikut: (email: admin@mail.com | password: 12345678)
