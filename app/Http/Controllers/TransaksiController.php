@@ -82,28 +82,29 @@ class TransaksiController extends Controller
             }
             // lolos validasi, update data dan create jadwal + invoice
             $transaksi = Transaksi::where('idTransaksi', $request->input('idTransaksi'))->update([
-                'status' => 'diproses'
+                'status' => $request->input('status')
             ]);
             // get data kendaraan by idSupir
             $kendaraan = Kendaraan::where('Supir_idSupir', $request->input('idSupir'))->first();
-            // model instance
-            $jadwal = new Jadwal;
-            $invoice = new Invoice;
-            // create jadwal baru
-            $jadwal->Admin_idAdmin = $request->input('Admin_idAdmin');
-            $jadwal->Kendaraan_idKendaraan = $kendaraan->idKendaraan;
-            $jadwal->Kendaraan_Supir_idSupir = $kendaraan->Supir_idSupir;
-            $jadwal->tanggal_pemberangkatan = $request->input('tanggal_pemberangkatan');
+            // create new jadwal
+            $jadwal = Jadwal::create([
+                'Admin_idAdmin' => $request->input('Admin_idAdmin'),
+                'Kendaraan_idKendaraan' => $kendaraan->idKendaraan,
+                'Kendaraan_Supir_idSupir' => $kendaraan->Supir_idSupir,
+                'tanggal_pemberangkatan' => $request->input('tanggal_pemberangkatan'),
+            ]);
             if ($jadwal->save()) {
                 // create invoice baru
-                $invoice->Transaksi_id_Transaksi = $request->input('idTransaksi');
-                $invoice->Transaksi_Admin_idAdmin = $request->input('Admin_idAdmin');
-                $invoice->Transaksi_Barang_idBarang = $request->input('Barang_idBarang');
-                $invoice->Transaksi_Barang_Pengirim_idPengirim = $request->input('Barang_Pengirim_idPengirim');
-                $invoice->Jadwal_idJadwal = $jadwal->idJadwal;
-                $invoice->Jadwal_Admin_idAdmin = $jadwal->Admin_idAdmin;
-                $invoice->Jadwal_Kendaraan_idKendaraan = $kendaraan->idKendaraan;
-                $invoice->Jadwal_Kendaraan_Supir_idSupir = $kendaraan->Supir_idSupir;
+                $invoice = Invoice::create([
+                    'Transaksi_id_Transaksi' => $request->input('idTransaksi'),
+                    'Transaksi_Admin_idAdmin' => 1,
+                    'Transaksi_Barang_idBarang' => $request->input('Barang_idBarang'),
+                    'Transaksi_Barang_Pengirim_idPengirim' => $request->input('Barang_Pengirim_idPengirim'),
+                    'Jadwal_idJadwal' => $jadwal->idJadwal,
+                    'Jadwal_Admin_idAdmin' => 1,
+                    'Jadwal_Kendaraan_idKendaraan' => $kendaraan->idKendaraan,
+                    'Jadwal_Kendaraan_Supir_idSupir' => $kendaraan->Supir_idSupir,
+                ]);
                 if ($invoice->save()) {
                     return redirect()->route('admin.transaksi.index')->with('success', 'Berhasil memproses transaksi!');
                 }

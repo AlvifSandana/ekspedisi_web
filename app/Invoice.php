@@ -14,7 +14,7 @@ class Invoice extends Model
     protected $primaryKey = 'idInvoice';
     // mass-assignment
     protected $fillable = [
-        'idInvoice', 'Transaksi_id_Transaksi', 'Tansaksi_Admin_idAdmin', 'Transaksi_Barang_idBarang', 'Transaksi_Barang_Pengirim_idPengirim',
+        'idInvoice', 'Transaksi_id_Transaksi', 'Transaksi_Admin_idAdmin', 'Transaksi_Barang_idBarang', 'Transaksi_Barang_Pengirim_idPengirim',
         'Jadwal_idJadwal', 'Jadwal_Admin_idAdmin', 'Jadwal_Kendaraan_idKendaraan', 'Jadwal_Kendaraan_Supir_idSupir'
     ];
 }
