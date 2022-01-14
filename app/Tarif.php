@@ -14,6 +14,6 @@ class Tarif extends Model
     protected $primaryKey = 'idTarif';
     // mass-assignment
     protected $fillable = [
-        'titik_pengiriman', 'tujuan_pengiriman', 'tarif', 'status', 'keterangan'
+        'idTarif', 'titik_pengiriman', 'tujuan_pengiriman', 'tarif', 'status', 'keterangan'
     ];
 }

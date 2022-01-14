@@ -14,6 +14,6 @@ class Barang extends Model
     protected $primaryKey ='idBarang';
     // mass-assignment
     protected $fillable = [
-        'nama_barang', 'jenis_barang', 'berat_barang', 'Pengirim_idPengirim'
+        'idBarang', 'nama_barang', 'jenis_barang', 'berat_barang', 'Pengirim_idPengirim'
     ];
 }

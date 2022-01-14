@@ -14,7 +14,7 @@ class Pengirim extends Model
     protected $primaryKey = 'idPengirim';
     // mass-assignment
     protected $fillable = [
-        'nama_pengirim', 'alamat_pengirim', 'nomor_telpon',
+        'idPengirim', 'nama_pengirim', 'alamat_pengirim', 'nomor_telpon',
         'email', 'password', 'api_token'
     ];
 }

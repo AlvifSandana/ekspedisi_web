@@ -14,6 +14,6 @@ class Kendaraan extends Model
     protected $primaryKey = 'idKendaraan';
     // mass-assignment
     protected $fillable = [
-        'jenis_kendaraan', 'plat_kendaraan', 'tahun_kendaraan', 'Supir_idSupir'
+        'idKendaraan', 'jenis_kendaraan', 'plat_kendaraan', 'tahun_kendaraan', 'Supir_idSupir'
     ];
 }

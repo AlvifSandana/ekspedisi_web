@@ -15,7 +15,7 @@ class Transaksi extends Model
     protected $primaryKey = 'idTransaksi';
     // mass-assignment
     protected $fillable = [
-        'Admin_idAdmin', 'Barang_idBarang', 'Barang_Pengirim_idPengirim', 'status'
+        'idTransaksi', 'Admin_idAdmin', 'Barang_idBarang', 'Barang_Pengirim_idPengirim', 'status'
     ];
 
     public function byId(String $idTransaksi)

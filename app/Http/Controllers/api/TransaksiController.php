@@ -44,7 +44,7 @@ class TransaksiController extends Controller
             // rules untuk validasi data
             $rules = [
                 'idPengirim' => 'required',
-                'jenis_barang' => 'requierd',
+                'jenis_muatan' => 'required',
                 'tanggal_muat' => 'required',
                 'lokasi_kirim' => 'required',
             ];
@@ -63,26 +63,29 @@ class TransaksiController extends Controller
                 ], 200);
             }
             // lolos validasi, create barang
-            $barang = new Barang;
-            $barang->nama_barang = $request->jenis_barang;
-            $barang->jenis_barang = $request->jenis_barang;
-            $barang->berat_barang = $request->berat_barang;
-            $barang->Pengirim_idPengirim = $request->idPengirim;
+            $barang = Barang::create([
+                'nama_barang' => $request->jenis_muatan,
+                'jenis_barang' => $request->jenis_muatan,
+                'berat_barang' => $request->berat_muatan,
+                'Pengirim_idPengirim' => $request->idPengirim,
+            ]);
             // create muatan
-            $muatan = new Muatan;
-            $muatan->nama_muatan = $request->nama_barang;
-            $muatan->pengirim_id = $request->idPengirim;
-            $muatan->tanggal_muat = $request->tanggal_muat;
-            $muatan->lokasi_kirim = $request->lokasi_kirim;
-            $muatan->catatan_muatan = $request->catatan_muatan;
+            $muatan = Muatan::create([
+                'nama_muatan' => $request->jenis_muatan,
+                'pengirim_id' => $request->idPengirim,
+                'tanggal_muat' => $request->tanggal_muat,
+                'lokasi_kirim' => $request->lokasi_kirim,
+                'catatan_muatan' => $request->catatan,
+            ]);
             // simpan data
             if ($barang->save() && $muatan->save()) {
                 // create transaksi
-                $transaksi = new Transaksi;
-                $transaksi->Admin_idAdmin = 1;
-                $transaksi->Barang_idBarang = $muatan->idMuatan;
-                $transaksi->Barang_Pengirim_idPengirim = $request->idPengirim;
-                $$transaksi->status = 'tertunda';
+                $transaksi = Transaksi::create([
+                    'Admin_idAdmin' => 1,
+                    'Barang_idBarang' => $muatan->idMuatan,
+                    'Barang_Pengirim_idPengirim' => $request->idPengirim,
+                    'status' => 'tertunda',
+                ]);
                 // simpan data transaksi
                 if ($transaksi->save()) {
                     return response()->json([
@@ -155,7 +158,7 @@ class TransaksiController extends Controller
         } catch (\Throwable $th) {
             return json_encode([
                 'status' => 'error',
-                'message'=> $th->getMessage(),
+                'message' => $th->getMessage(),
                 'data' => $th->getTraceAsString()
             ]);
         }

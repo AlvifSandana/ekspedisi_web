@@ -11,6 +11,6 @@ class Muatan extends Model
     public $timestamps = true;
     protected $primaryKey = 'idMuatan';
     protected $fillable = [
-        'nama_muatan', 'pengirim_id', 'tanggal_muat', 'lokasi_kirim', 'catatan_muatan'
+        'idMuatan', 'nama_muatan', 'pengirim_id', 'tanggal_muat', 'lokasi_kirim', 'catatan_muatan'
     ];
 }
