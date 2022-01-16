@@ -55,18 +55,18 @@
       <span>Supir</span></a>
   </li>
 
-  <!-- Nav Item - Transaksi -->
+  <!-- Nav Item - Pesanan -->
   <li class="nav-item {{ Request::is('admin/transaksi*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('admin.transaksi.index') }}">
       <i class="fas fa-fw fa-money-bill"></i>
-      <span>Transaksi</span></a>
+      <span>Pengirim</span></a>
   </li>
 
   <!-- Nav Item - Invoice -->
   <li class="nav-item {{ Request::is('admin/invoice*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('admin.invoice.index') }}">
       <i class="fas fa-fw fa-file-invoice-dollar"></i>
-      <span>Invoice</span></a>
+      <span>Pesanan</span></a>
   </li>
 
   <!-- Nav Item - Settings -->

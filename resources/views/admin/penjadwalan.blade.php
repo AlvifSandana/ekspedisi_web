@@ -45,10 +45,7 @@
                                         <i class="fas fa-fw fa-ellipsis-h" data-toggle="dropdown" aria-haspopup="true"
                                             aria-expanded="false"></i>
                                         <div class="dropdown-menu">
-                                            <a href="#edit" class="dropdown-item text-warning edit" data-toggle="modal" data-target="#updateSupirModal" data-id="{{ $j->idJadwal }}">
-                                                <i class="fas fa-fw fa-edit "></i>
-                                                Edit
-                                            </a>
+                                            
                                             <a href="#hapus" class="dropdown-item text-danger" onclick="deleteConfirm('delete-data')">
                                                 <i class="fas fa-fw fa-trash "></i>
                                                 Hapus

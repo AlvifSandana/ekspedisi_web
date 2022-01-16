@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    <title>Transaksi</title>
+    <title>Pesanan</title>
 @endsection
 
 @section('css')
@@ -12,7 +12,7 @@
 
 @section('content_heading')
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Transaksi</h1>
+        <h1 class="h3 mb-0 text-gray-800">Pesanan</h1>
     </div>
 @endsection
 
