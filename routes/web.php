@@ -30,6 +30,14 @@ Route::post('admin/tarif/add', 'TarifController@createTarif')->name('admin.tarif
 Route::put('admin/tarif/update', 'TarifController@updateTarif')->name('admin.tarif.update')->middleware('auth');
 Route::delete('admin/tarif/delete/{id}', 'TarifController@deleteTarif')->name('admin.tarif.delete')->middleware('auth');
 
+
+// buah route
+Route::get('admin/buah', 'BuahController@index')->name('admin.buah.index')->middleware('auth');
+Route::get('admin/buah/get', 'BuahController@show')->name('admin.buah.show')->middleware('auth');
+Route::post('admin/buah/add', 'BuahController@createBuah')->name('admin.buah.create')->middleware('auth');
+Route::put('admin/buah/update', 'BuahController@updateBuah')->name('admin.buah.update')->middleware('auth');
+Route::delete('admin/buah/delete/{id}', 'BuahController@deleteBuah')->name('admin.buah.delete')->middleware('auth');
+
 // jadwal route
 Route::get('admin/jadwal', 'JadwalController@index')->name('admin.jadwal.index')->middleware('auth');
 Route::get('admin/jadwal/get', 'JadwalController@show')->name('admin.jadwal.show')->middleware('auth');
@@ -49,6 +57,7 @@ Route::get('admin/transaksi', 'TransaksiController@index')->name('admin.transaks
 Route::put('admin/transaksi/acc_transaksi', 'TransaksiController@accTransaksi')->name('admin.transaksi.acc')->middleware('auth');
 Route::get('admin/transaksi/by_id', 'TransaksiController@getTransaksiById')->name('admin.transaksi.byId')->middleware('auth');
 Route::get('admin/transaksi/delete/{id}', 'TransaksiController@deleteTransaksi')->name('admin.transaksi.delete')->middleware('auth');
+Route::get('admin/laporan', 'TransaksiController@laporantransaksi')->name('admin.transaksis.laporan')->middleware('auth');
 
 // Supir route
 Route::get('admin/supir', 'SupirController@index')->name('admin.supir.index')->middleware('auth');
@@ -58,3 +67,12 @@ Route::delete('admin/supir/delete/{id}', 'SupirController@deleteSupir')->name('a
 
 // Muatan route
 Route::get('admin/muatan', 'MuatanController@index')->name('admin.muatan.index')->middleware('auth');
+
+// Route::get('admin/muatan', 'MuatanController@index')->name('admin.muatan.index')->middleware('auth');
+Route::get('admin/muatans', 'MuatanController@indexs')->name('admin.muatan.indexs')->middleware('auth');
+
+//pengiriman route
+// Route::get('admin/supiraktif', 'PengirimanController@indexs')->name('admin.pengiriman.index')->middleware('auth');
+// Route::put('admin/transaksi/acc_transaksi', 'TransaksiController@accTransaksi')->name('admin.transaksi.acc')->middleware('auth');
+// Route::get('admin/transaksi/by_id', 'TransaksiController@getTransaksiById')->name('admin.transaksi.byId')->middleware('auth');
+// Route::get('admin/transaksi/delete/{id}', 'TransaksiController@deleteTransaksi')->name('admin.transaksi.delete')->middleware('auth');

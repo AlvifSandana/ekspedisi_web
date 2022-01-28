@@ -26,17 +26,19 @@
                     <thead class="text-center">
                         <th>Nama Sopir Kanan</th>
                         <th>Nama Sopir Kiri</th>
-                        <th>Tanggal</th>
+                        <th>Tanggal Aktif</th>
+                        <th>Status Muatan</th>
                         <th>Anggota</th>
                         <th>Action</th>
                     </thead>
                     <tbody>
-                        @foreach ($data['jadwal'] as $j)
+                        @foreach ($data as $j)
                             <tr class="text-center mt-3 mb-3" style="background-color: #f7fafc">
                                 <td><strong>{{ $j->nama_supir }}</strong></td>
-                                <td><strong>{{ $j->nama_supircadang }}</strong></td>
-                                <td><strong>{{ \Carbon\Carbon::parse($j->tanggal_pemberangkatan)->format('D, d M Y') }}</strong>
+                                <td><strong>{{ $j->nama_supir2 }}</strong></td>
+                                <td><strong>{{ \Carbon\Carbon::parse($j->tanggal_aktif)->format('D, d M Y') }}</strong>
                                 </td>
+                                <td><strong>{{ $j->status_muatan }}</strong></td>
                                 <td>
                                     <span class="badge badge-pill badge-{{ $j->status == 'baru' ? 'success' : 'danger' }}">{{ $j->status }}</span>
                                 </td>
@@ -52,7 +54,7 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <form id="delete-data" action="{{ route('admin.jadwal.delete', $j->idJadwal) }}"
+                                    <form id="delete-data" action="{{ route('admin.jadwal.delete', $j->id) }}"
                                         method="post">
                                         @csrf
                                         @method('DELETE')

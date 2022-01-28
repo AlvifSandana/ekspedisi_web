@@ -14,18 +14,28 @@ class JadwalController extends Controller
     /**
      * show penjadwalan page
      */
+    // public function index(){
+    //     $data['jadwal'] = DB::table('jadwal')
+    //                       ->join('kendaraan', 'jadwal.Kendaraan_idKendaraan', '=', 'kendaraan.idKendaraan')
+    //                       ->join('supir', 'jadwal.Kendaraan_Supir_idSupir', '=', 'supir.idSupir')
+    //                       ->select('jadwal.*', 'kendaraan.*', 'supir.*')
+    //                       ->get();
+    //     // create model object
+    //     $m_kendaraan = new Kendaraan();
+    //     $m_supir = new Supir();
+    //     // get data kendaraan dan supir
+    //     $data['kendaraan'] = $m_kendaraan->all();
+    //     $data['supir'] = $m_supir->all();
+    //     return view('admin.penjadwalan', compact('data'));
+    // }
     public function index(){
-        $data['jadwal'] = DB::table('jadwal')
-                          ->join('kendaraan', 'jadwal.Kendaraan_idKendaraan', '=', 'kendaraan.idKendaraan')
-                          ->join('supir', 'jadwal.Kendaraan_Supir_idSupir', '=', 'supir.idSupir')
-                          ->select('jadwal.*', 'kendaraan.*', 'supir.*')
-                          ->get();
-        // create model object
-        $m_kendaraan = new Kendaraan();
-        $m_supir = new Supir();
-        // get data kendaraan dan supir
-        $data['kendaraan'] = $m_kendaraan->all();
-        $data['supir'] = $m_supir->all();
+        $data = DB::table('pengiriman')
+                ->leftJoin('supir', 'pengiriman.id_supir', '=', 'supir.idSupir')
+                ->select('pengiriman.*', 'supir.*')
+                ->get();
+
+                // return $data;
+        
         return view('admin.penjadwalan', compact('data'));
     }
 

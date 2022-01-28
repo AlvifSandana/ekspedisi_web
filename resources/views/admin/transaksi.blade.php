@@ -12,7 +12,7 @@
 
 @section('content_heading')
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Pesanan</h1>
+        <h1 class="h3 mb-0 text-gray-800">Pengiriman Barang</h1>
     </div>
 @endsection
 
@@ -25,6 +25,8 @@
                     <thead class="text-center">
                         <th>Nama Pengirim</th>
                         <th>Nama Barang</th>
+                        <th>Tujuan Lokasi</th>
+                        <th>Supir</th>
                         <th>Status Transaksi</th>
                         <th>Action</th>
                     </thead>
@@ -32,14 +34,22 @@
                         @foreach ($data_transaksi as $item)
                             <tr>
                                 <td data-toggle="popover" title="Detail Pengirim"
-                                    data-content="{{ $item->alamat_pengirim }}. Telepon : {{ $item->nomor_telpon }}">
+                                    data-content="{{ $item->alamat_pengirim }}. Telepon : {{ $item->nomor_telpon_pengirim }}">
                                     {{ $item->nama_pengirim }}
                                 </td>
                                 <td class="text-center" data-toggle="popover" title="Detail Barang"
-                                    data-content="{{ $item->jenis_barang }} seberat {{ $item->berat_barang }}">
-                                    {{ $item->nama_barang }}
+                                    data-content="{{ $item->buah }} seberat {{ $item->berat_muatan }}">
+                                    {{ $item->nama_muatan }}
                                 </td>
-                                <td class="text-center">{{ $item->status }}</td>
+                                <td data-toggle="popover" title="Detail Pengirim"
+                                    data-content="{{ $item->tarif }}. Keterangan : {{ $item->keterangan}}">
+                                    {{ $item->tujuan_pengiriman }}
+                                </td>
+                                <td data-toggle="popover" title="Detail Pengirim"
+                                    data-content="{{ $item->alamat_supir }}. Telepon : {{ $item->nomor_telpon }}">
+                                    {{ $item->nama_supir}}
+                                </td>
+                                <td class="text-center">{{ $item->status_transaksi}}</td>
                                 <td class="text-center">
                                     <div class="dropdown no-arrow">
                                         <i class="fas fa-fw fa-ellipsis-h" data-toggle="dropdown" aria-haspopup="true"
@@ -87,7 +97,7 @@
                             <input type="text" name="idTransaksi" id="idTransaksi" hidden>
                             <input type="text" name="Barang_Pengirim_idPengirim" id="Barang_Pengirim_idPengirim" hidden>
                             <input type="text" name="Barang_idBarang" id="Barang_idBarang" hidden>
-                            <input type="text" name="Admin_idAdmin" id="Admin_idAdmin" hidden>
+                            <input type="text" name="Admin_idAdmin" id="Admin_idAdmin" value="1" hidden>
                         </div>
                         <div class="form-group">
                             <label for="alamat_pengirim" class="col-form-label">Alamat Pengirim:</label>
@@ -161,14 +171,14 @@
                 success: function(data) {
                     $('#idTransaksi').val(data[0].idTransaksi)
                     $('#Admin_idAdmin').val(data[0].Admin_idAdmin)
-                    $('#Barang_Pengirim_idPengirim').val(data[0].idPengirim)
-                    $('#Barang_idBarang').val(data[0].idBarang)
+                    // $('#Barang_Pengirim_idPengirim').val(data[0].idPengirim)
+                    // $('#Barang_idBarang').val(data[0].idBarang)
                     $('#nama_pengirim').val(data[0].nama_pengirim)
                     $('#alamat_pengirim').val(data[0].alamat_pengirim)
                     $('#status').val(data[0].status)
-                    $('#nama_barang').val(data[0].nama_barang)
-                    $('#jenis_barang').val(data[0].jenis_barang)
-                    $('#berat_barang').val(data[0].berat_barang)
+                    $('#nama_barang').val(data[0].nama_muatan)
+                    $('#jenis_barang').val(data[0].buah)
+                    $('#berat_barang').val(data[0].berat_muatan)
                     $('#tanggal_pemberangkatan').val(data[0].tanggal_muat)
                 }
             })

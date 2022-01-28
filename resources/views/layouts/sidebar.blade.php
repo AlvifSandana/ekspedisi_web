@@ -5,7 +5,7 @@
     <div class="sidebar-brand-icon">
       <img src="{{ asset('img/logo.png') }}" alt="logo" style="max-width: 50%">
     </div>
-    <div class="sidebar-brand-text mx-3">Admin</div>
+    <div class="sidebar-brand-text mx-3">Maju Lancar</div>
   </a>
 
   <!-- Divider -->
@@ -16,6 +16,17 @@
     <a class="nav-link" href="{{ route('admin.dashboard.index') }}">
       <i class="fas fa-fw fa-chart-pie"></i>
       <span>Dashboard</span></a>
+  </li>
+  <li class="nav-item {{ Request::is('admin/buah*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('admin.buah.index') }}">
+      <i class="fas fa-fw fa-cog"></i>
+      <span>Buah</span></a>
+  </li>
+    <!-- Nav Item --->
+    <li class="nav-item {{ Request::is('admin/supir*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('admin.supir.index') }}">
+      <i class="fas fa-fw fa-users"></i>
+      <span>Data Supir Utama</span></a>
   </li>
 
   <!-- Nav Item - Daftar Tarif -->
@@ -28,7 +39,6 @@
         <div class="bg-white py-2 collapse-inner rounded">
           <h6 class="collapse-header">Tarif:</h6>
           <a class="collapse-item" href="{{ route('admin.tarif.index') }}">Supir</a>
-          <a class="collapse-item" href="{{ route('admin.tarif.index') }}">Pengirim</a>
         </div>
       </div>
   </li>
@@ -48,33 +58,38 @@
     </div>
   </li>
 
-  <!-- Nav Item - Transaksi -->
-  <li class="nav-item {{ Request::is('admin/supir*') ? 'active' : '' }}">
+
+  <!-- <li class="nav-item {{ Request::is('admin/supir*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('admin.supir.index') }}">
       <i class="fas fa-fw fa-users"></i>
-      <span>Supir</span></a>
-  </li>
+      <span>Supir Aktif</span></a>
+  </li> -->
 
   <!-- Nav Item - Pesanan -->
   <li class="nav-item {{ Request::is('admin/transaksi*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('admin.transaksi.index') }}">
       <i class="fas fa-fw fa-money-bill"></i>
-      <span>Pengirim</span></a>
+      <span>Pengiriman Barang</span></a>
   </li>
 
   <!-- Nav Item - Invoice -->
-  <li class="nav-item {{ Request::is('admin/invoice*') ? 'active' : '' }}">
+  <!-- <li class="nav-item {{ Request::is('admin/invoice*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('admin.invoice.index') }}">
       <i class="fas fa-fw fa-file-invoice-dollar"></i>
-      <span>Pesanan</span></a>
-  </li>
+      <span>Transaksi</span></a>
+  </li> -->
+
+
 
   <!-- Nav Item - Settings -->
-  <li class="nav-item ">
-    <a class="nav-link" href="index.html">
+  <li class="nav-item {{ Request::is('admin/laporan') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('admin.transaksis.laporan') }}">
       <i class="fas fa-fw fa-cog"></i>
-      <span>Settings</span></a>
+      <span>Laporan</span></a>
   </li>
+
+  
+
 
   <!-- Divider -->
   <hr class="sidebar-divider d-none d-md-block">
